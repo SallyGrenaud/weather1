@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 body {
   text-align: center;
 }
@@ -500,7 +506,9 @@ input {
   position: relative;
   top: -7rem;
   padding-top: 0px;
-  margin: 50px;
+  margin: 0 auto;
+  max-width: 500px;
+
 }
 
 #btn-back-to-top {
@@ -667,7 +675,7 @@ img {
 .row {
   margin-left: -15px;
   margin-right: -15px;
-  *zoom: 1;
+  
 }
 .row:after {
   content: " ";
@@ -778,7 +786,7 @@ a {
 .topnav {
   overflow: hidden;
   background-color: #262936;
-  border-radius: 10px;
+  padding-left: 10px;
 }
 
 .topnav a {

@@ -56,3 +56,51 @@ function myFunction() {
 }
 
 
+const day=document.getElementById("day");
+const date=document.getElementById("date");
+const locationUse=document.getElementById("locationUse");
+const windSpeed=document.getElementById("windSpeed");
+const tempKey=document.getElementById("tempKey");
+const search=document.getElementById("searchValue")
+const searchBtn=document.getElementById("searchBtn");
+const searchId=document.getElementById("searchId");
+const API_KEY = "168771779c71f3d64106d8a88376808a";
+async function showWeather(cityIn) {
+  
+    if(cityIn)
+    {
+      try {
+        var city = cityIn;
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+        );
+    
+        const data = await response.json();
+        // console.log("Weather -> ", data);
+    
+        renderWeatherInfo(data);
+      } catch (err) {
+        console.warn(err);
+      }
+    }
+}
+
+showWeather();
+
+function renderWeatherInfo(data)
+{
+    locationUse.innerText=data.name;
+    windSpeed.innerText=data.wind.speed; 
+    tempKey.innerText=Math.floor(data.main.temp);
+}
+
+
+document.getElementById("searchId").addEventListener("submit", function(event) {
+  event.preventDefault(); 
+});
+
+searchBtn.addEventListener("click",function()
+{
+    showWeather(search.value);
+});
+
